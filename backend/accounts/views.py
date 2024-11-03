@@ -73,7 +73,7 @@ class SignupView(APIView):
                     if len(password) <  8:
                         return Response({'error': 'password must at least be 8 characters'})
                     else:
-                        user = User.objects.create_user(username=username, password=password)
+                        user = User.objects.create_user(username=username, password=password, balance=0.0)
                         user.save()
                 
                         user = User.objects.get(id=user.id)

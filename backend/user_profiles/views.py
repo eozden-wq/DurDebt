@@ -15,7 +15,7 @@ class GetUserProfileView(APIView):
             user_profile = UserProfile.objects.get(user=user)
             user_profile = UserProfileSerializer(user_profile)
 
-            return Response({'profile': user_profile.data, 'username': str(user.username) })
+            return Response({'profile': user_profile.data, 'username': str(user.username), 'balance': float(user_profile.data.balance)})
         except:
             return Response({'error': 'User not found'})
 
